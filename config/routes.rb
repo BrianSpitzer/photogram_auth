@@ -45,8 +45,8 @@ Rails.application.routes.draw do
   get "/photos", :controller => "photos", :action => "index"
   get "/photos/:id", :controller => "photos", :action => "show"
   
-  get "/my_likes", :controller => "photos", :action => "favorites"
-  get "/my_wall", :controller => "photos", :action => "wall"
+  get "/my_likes", :controller => "photos", :action => "mylikes"
+  get "/my_wall", :controller => "photos", :action => "my_wall"
 
   # UPDATE
   get "/photos/:id/edit", :controller => "photos", :action => "edit"

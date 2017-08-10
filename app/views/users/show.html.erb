@@ -1,18 +1,40 @@
-<div class="page-header">
-  <h3>User #<%= @user.id %></h3>
-</div>
-
 <div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>User Name</dt>
-      <dd><%= @user.username %></dd>
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/users" class="btn btn-primary">
-        Back
-      </a>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="jumbotron">
+      <h3>
+        <%= @user.username %>
+      </h3>
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <a href="/photos/new" class="btn btn-default btn-block">
+      <i class="fa fa-plus"></i>
+    </a>
+
+    <hr>
+  </div>
+</div>
+
+<% @user.photos.each do |photo| %>
+  <div class = "row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a href="/users/<%= photo.user_id %>">
+              <%= photo.user.username %>
+            </a>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <a href="/photos/<%= photo.id %>">
+            <img src="<%= photo.image %>" class="img-responsive">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

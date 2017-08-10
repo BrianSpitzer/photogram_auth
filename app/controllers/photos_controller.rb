@@ -69,18 +69,18 @@ class PhotosController < ApplicationController
     end
   end
   
-  def favorites 
+  def mylikes
 
     @photos = current_user.liked_photos
 
-    render("/photos/favorites.html.erb")  
+    render("/photos/my_likes.html.erb")  
   end
   
-  def wall 
+  def my_wall 
 
     @photos = current_user.photos
 
-    render("/photos/wall.html.erb")  
+    render("/photos/my_wall.html.erb")  
   end
   
 end
