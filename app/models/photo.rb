@@ -4,6 +4,6 @@ class Photo < ApplicationRecord
   has_many :likes
   has_many :fans, :through => :likes, :source => :user
   
-  validates :user_id, :presence => true  #in Rails 5 this is enforced by the association
+  validates :user_id, :presence => true  #in Rails 5.1 this is enforced by the association
   
 end

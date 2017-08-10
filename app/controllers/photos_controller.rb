@@ -68,4 +68,19 @@ class PhotosController < ApplicationController
       redirect_to(:back, :notice => "Photo deleted.")
     end
   end
+  
+  def favorites 
+
+    @photos = current_user.liked_photos
+
+    render("/photos/favorites.html.erb")  
+  end
+  
+  def wall 
+
+    @photos = current_user.photos
+
+    render("/photos/wall.html.erb")  
+  end
+  
 end
