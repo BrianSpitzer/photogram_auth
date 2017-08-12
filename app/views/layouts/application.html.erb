@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PhotogramAuth</title>
+  <title>MyPhotogramAuth</title>
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -64,15 +64,16 @@
               </span>
             </a>
           </li>
-          <li>
-            <a href="/users/<%= current_user.id %>">
-              <i class="fa fa-fw fa-user"></i>
-              <span class="hidden-sm">
-                My Wall
-              </span>
-            </a>
-          </li>
-
+          <% if current_user.present? %>
+            <li>
+              <a href="/users/<%= current_user.id %>">
+                <i class="fa fa-fw fa-user"></i>
+                <span class="hidden-sm">
+                  My Wall
+                </span>
+              </a>
+            </li>
+          <% end %>
           <li><a href="/comments">Comments</a></li>
           <li><a href="/likes">Likes</a></li>
         </ul>
@@ -92,7 +93,7 @@
           <% else %>
             <li>
               <a href="/users/edit">
-                Edit Profile
+                <%= current_user.username %>
               </a>
             </li>
             <li>
