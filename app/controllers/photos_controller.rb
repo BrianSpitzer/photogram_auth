@@ -76,7 +76,7 @@ class PhotosController < ApplicationController
     render("/photos/my_likes.html.erb")  
   end
   
-  def my_wall 
+  def mywall 
 
     @photos = current_user.photos
 
