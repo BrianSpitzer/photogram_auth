@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  
   def index
     @comments = Comment.all
 
@@ -23,11 +25,20 @@ class CommentsController < ApplicationController
     @comment.photo_id = params[:photo_id]
     @comment.body = params[:body]
     @comment.user_id = params[:user_id]
+    
+    back_to = params[:back_to]
 
     save_status = @comment.save
 
     if save_status == true
-      redirect_to("/comments/#{@comment.id}", :notice => "Comment created successfully.")
+      # redirect_to("/comments/#{@comment.id}", :notice => "Comment created successfully.")
+      if back_to == "photo"
+        redirect_to("/photos/"+@comment.photo_id.to_s)
+      elsif back_to == "likes"
+        redirect_to("/my_likes")
+      else
+        redirect_to("/photos")
+      end
     else
       render("comments/new.html.erb")
     end
