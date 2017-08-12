@@ -85,6 +85,19 @@
                 <% end %>
         
                 <ul class="media-list">
+
+                  <li class="media">
+                    <div class="media-body">
+                      <h6 class="media-heading">
+                        <a href="/users/<%= photo.user_id %>"> <%= photo.user.username %></a>
+                        <small>
+                          How does this time thing work?
+                        </small>
+                      </h6>
+                      <%= photo.caption %>
+                    </div>
+                  </li>
+
                   <% photo.comments.each do |comment| %>
                     <li class="media">
                       <div class="media-body">
